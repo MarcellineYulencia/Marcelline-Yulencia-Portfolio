@@ -1,0 +1,17 @@
+.contact-icon svg{width:23px;height:23px}.contact-location{font-size:11px;color:#8d97b4;margin:22px 0 0;padding-left:6px}.form-note{line-height:1.8;max-width:430px}
+footer.site-footer{display:block;width:100%;max-width:none;margin:0;background:linear-gradient(130deg,#10172b,#101427 70%);border-top:1px solid #ffffff0f;padding:0;color:#b7c0d9}
+.footer-inner{max-width:1230px;width:88%;margin:auto;padding:65px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.55fr 1fr .8fr;gap:75px;padding-bottom:48px}
+.footer-name{display:inline-block;font:700 28px/1.25 'Manrope',sans-serif;letter-spacing:-1px;color:#f3f4fd}.footer-name span{color:#a591fc}
+.footer-description{max-width:345px;color:#818eac;font-size:12px;line-height:1.9;margin:18px 0 25px}
+.site-footer h3{font-size:14px;font-weight:600;color:#e8ebf8;letter-spacing:0;margin:0 0 23px}
+.footer-profile h3{margin:0 0 10px;font-size:13px;color:#b9c3dc}
+.footer-email{font-size:12px;overflow-wrap:anywhere;transition:color .2s}.footer-email:hover{color:#b5a3ff}
+.footer-location{display:flex;align-items:center;gap:7px;font-size:11px;color:#8795b1;margin:10px 0 0}.footer-location svg{width:14px;height:14px;flex:none}
+.footer-links{display:flex;flex-direction:column;align-items:start;gap:13px}.footer-links a{font-size:12px;color:#94a1bf;transition:color .2s,transform .2s}.footer-links a:hover{color:#c2b6ff;transform:translateX(3px)}
+.footer-navigation{display:grid;grid-template-columns:1fr 1fr;gap:13px 30px}
+.footer-bottom{position:relative;border-top:1px solid #ffffff14;padding-top:27px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:17px}
+.footer-socials{display:flex;justify-content:center;gap:12px}.footer-socials a{border:1px solid #8090b44a;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#9caac7;transition:transform .2s,color .2s,border-color .2s,background .2s}.footer-socials svg{width:17px;height:17px}.footer-socials a:hover{color:#d4caff;border-color:#a38bf3;background:#8064e51c;transform:translateY(-3px)}
+.footer-bottom>p{font-size:10px;color:#657596;margin:0}.footer-bottom .footer-top{position:absolute;right:0;top:36px;font-size:10px;color:#9cabc8;display:flex;align-items:center;gap:12px}.footer-top span{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid #8d7bd449;color:#b6a4f7;background:#7c5fe51a}
+@media(max-width:1000px){.footer-grid{gap:35px;grid-template-columns:1.4fr 1fr 1fr}.footer-name{font-size:24px}.footer-navigation{gap:13px 18px}}
+@media(max-width:700px){.footer-inner{padding:45px 0 24px}.footer-grid{grid-template-columns:1fr 1fr;gap:35px 25px;padding-bottom:35px}.footer-profile{grid-column:1/-1}.footer-name{font-size:27px}.footer-description{max-width:360px;font-size:12px;margin-bottom:20px}.site-footer h3{font-size:13px;margin-bottom:18px}.footer-profile h3{margin-bottom:8px}.footer-links{gap:12px}.footer-links a{font-size:11px}.footer-navigation{grid-template-columns:1fr;gap:12px}.footer-bottom{align-items:center;padding-top:25px;gap:17px}.footer-bottom .footer-top{position:static;order:3;font-size:10px}.footer-bottom>p{font-size:9px;text-align:center}.footer-socials a{width:38px;height:38px}.contact-location{font-size:10px}}
