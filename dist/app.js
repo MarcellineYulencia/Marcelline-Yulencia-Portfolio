@@ -56,6 +56,35 @@ function render(filter='All'){
 }
 render();document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render(b.dataset.filter)}));document.querySelector('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 const menu=document.querySelector('.menu'),nav=document.querySelector('nav');menu.onclick=()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Close −':'Menu +'};nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu +'}));
+
+document.querySelectorAll('.community-card').forEach(card=>{
+ const photos=card.querySelector('.community-photos');
+ if(!photos)return;
+ const copy=document.createElement('div');copy.className='community-copy';
+ [...card.children].filter(el=>el!==photos).forEach(el=>copy.append(el));card.prepend(copy);
+ const slides=[...photos.children];let current=0;
+ photos.classList.add('community-carousel');photos.setAttribute('role','region');
+ photos.setAttribute('aria-label',`${card.querySelector('.eyebrow').textContent} photos`);
+ const viewport=document.createElement('div');viewport.className='community-viewport';
+ slides.forEach((slide,i)=>{slide.classList.add('community-slide');slide.hidden=i!==0;viewport.append(slide)});
+ photos.append(viewport);
+ const controls=document.createElement('div');controls.className='community-controls';
+ const dots=document.createElement('div');dots.className='community-dots';dots.setAttribute('role','group');dots.setAttribute('aria-label','Choose a photo');
+ const show=index=>{current=(index+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==current);[...dots.children].forEach((dot,i)=>dot.setAttribute('aria-pressed',String(i===current)))};
+ const button=(label,text,action)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',label);b.textContent=text;b.addEventListener('click',action);return b};
+ slides.forEach((slide,i)=>{const dot=button(`Show photo ${i+1} of ${slides.length}`,'',()=>show(i));dot.className='community-dot';dot.setAttribute('aria-pressed',String(i===0));dots.append(dot)});
+ if(slides.length>1)controls.append(button('Previous organization photo','←',()=>show(current-1)));
+ controls.append(dots);
+ if(slides.length>1){
+  controls.append(button('Next organization photo','→',()=>show(current+1)));
+  let paused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pause=button(paused?'Play photo slideshow':'Pause photo slideshow',paused?'▶':'Ⅱ',()=>{paused=!paused;pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-label',paused?'Play photo slideshow':'Pause photo slideshow')});
+  pause.className='community-pause';controls.append(pause);
+  setInterval(()=>{if(!paused&&!document.hidden&&!photos.matches(':hover')&&!photos.contains(document.activeElement))show(current+1)},5000);
+  photos.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(current+(e.key==='ArrowLeft'?-1:1))}});
+ }
+ photos.append(controls);
+});
 document.querySelector('#copy-email').onclick=async()=>{try{await navigator.clipboard.writeText('marcellineyulencia@gmail.com');document.querySelector('#copy-status').textContent='Email copied!'}catch{document.querySelector('#copy-status').textContent='marcellineyulencia@gmail.com'}};
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)nav.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-20% 0px -60% 0px'});document.querySelectorAll('main>section').forEach(s=>observer.observe(s));
 
