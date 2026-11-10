@@ -44,3 +44,5 @@ header{max-width:1280px}nav{gap:1px}nav a{padding:9px 10px;font-size:11px}.proje
 .campus-dialog .phone-frame{width:210px}
 .campus-dialog .research-image-link img{height:340px;background:#f3f3f3}
 @media(max-width:700px){.campus-dialog .phone-frame{width:190px}.campus-dialog .research-image-link img{height:210px}}
+
+.sadaru-preview{background:radial-gradient(ellipse at 50% 80%,#ba975838,transparent 75%),#252b25}
